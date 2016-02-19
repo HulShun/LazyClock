@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/addalarm_week_unselect"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/stop_math_clockbg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:touchscreenBlocksFocus="true">
+
+        <ImageView
+            android:layout_width="159dp"
+            android:layout_height="170dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/stop_clock" />
+
+        <TextView
+            android:id="@+id/stop_math_timetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/main_item_time"
+            android:textColor="@color/white"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/stop_math_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stop_msg"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/stop_math_startbtn"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/stop_math_clockbg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/stop_code_start_selector"
+        android:text="@string/stop_msg2"
+        android:textColor="@color/stop_btm" />
+
+    <Button
+        android:id="@+id/stop_math_exitbtn"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/stop_math_clockbg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:alpha="0.0"
+        android:background="@drawable/stop_code_start_selector"
+        android:enabled="false"
+        android:text="@string/cancleAlarm"
+        android:textColor="@color/stop_btm"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:id="@+id/stop_math_bg"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_alignParentBottom="true"
+        android:alpha="0.0"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/stop_math_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="3dp"
+            android:maxLines="3"
+            android:minLines="3"
+            android:text="@string/stop_question"
+            android:textColor="@color/stop_text1"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:id="@+id/stop_math_checkA"
+            android:layout_width="210dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/stop_math_select_bg">
+
+            <TextView
+                android:id="@+id/stop_math_checkA_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/stop_A"
+                android:textColor="@color/stop_text1"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/stop_math_checkA_image"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/stop_math_wrong" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/stop_math_checkB"
+            android:layout_width="210dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/stop_math_select_bg">
+
+            <TextView
+                android:id="@+id/stop_math_checkB_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/stop_A"
+                android:textColor="@color/stop_text1"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/stop_math_checkB_image"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/stop_math_wrong" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/stop_math_checkC"
+            android:layout_width="210dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/stop_math_select_bg">
+
+            <TextView
+                android:id="@+id/stop_math_checkC_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/stop_A"
+                android:textColor="@color/stop_text1"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/stop_math_checkC_image"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/stop_math_wrong" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/stop_math_checkD"
+            android:layout_width="210dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/stop_math_select_bg">
+
+            <TextView
+                android:id="@+id/stop_math_checkD_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/stop_A"
+                android:textColor="@color/stop_text1"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/stop_math_checkD_image"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/stop_math_wrong" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

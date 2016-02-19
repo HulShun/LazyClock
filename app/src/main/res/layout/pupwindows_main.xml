@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/menus_bg"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/popup_id_1"
+            style="@style/qiuckAlarm"
+            android:text="@string/popup_time1" />
+
+        <CheckBox
+            android:id="@+id/popup_id_2"
+            style="@style/qiuckAlarm"
+            android:text="@string/popup_time2" />
+
+        <CheckBox
+            android:id="@+id/popup_id_3"
+            style="@style/qiuckAlarm"
+            android:text="@string/popup_time3" />
+
+        <CheckBox
+            android:id="@+id/popup_id_4"
+            style="@style/qiuckAlarm"
+            android:text="@string/popup_time4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/popup_id_5"
+            style="@style/qiuckAlarm"
+            android:text="@string/popup_time5" />
+
+        <CheckBox
+            android:id="@+id/popup_id_6"
+            style="@style/qiuckAlarm"
+            android:text="@string/popup_time6" />
+
+        <CheckBox
+            android:id="@+id/popup_id_7"
+            style="@style/qiuckAlarm"
+            android:text="@string/popup_time7" />
+
+        <CheckBox
+            android:id="@+id/popup_id_8"
+            style="@style/qiuckAlarm"
+            android:text="@string/popup_time8" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/popup_id_text"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/menus_lasting_selector"
+        android:gravity="center"
+        android:text="倒计时 00：00" />
+</LinearLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="285dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/addalarm_popup_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/stoptype_id_clickview"
+        style="@style/AddAlarm_popup_item">
+
+        <TextView
+            android:id="@+id/alert_text1"
+            style="@style/AddAlarm_popup_item_text"
+            android:text="@string/stoptype_touch" />
+
+        <RadioButton
+            android:id="@+id/stoptype_id_clickbox"
+            style="@style/AddAlarm_popup_item_checkbox"
+            android:layout_alignBottom="@id/alert_text1"
+            android:checked="true" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/stoptype_id_shankview"
+        style="@style/AddAlarm_popup_item">
+
+        <TextView
+            android:id="@+id/alert_text2"
+            style="@style/AddAlarm_popup_item_text"
+            android:text="@string/stoptype_shake" />
+
+
+        <RadioButton
+            android:id="@+id/stoptype_id_shankbox"
+            style="@style/AddAlarm_popup_item_checkbox"
+            android:layout_alignBottom="@id/alert_text2" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/stoptype_id_codeview"
+        style="@style/AddAlarm_popup_item">
+
+        <TextView
+            android:id="@+id/alert_text3"
+            style="@style/AddAlarm_popup_item_text"
+            android:text="@string/stoptype_code" />
+
+
+        <RadioButton
+            android:id="@+id/stoptype_id_codebox"
+            style="@style/AddAlarm_popup_item_checkbox"
+            android:layout_alignBottom="@id/alert_text3" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/stoptype_id_mathview"
+        style="@style/AddAlarm_popup_item">
+
+        <TextView
+            android:id="@+id/alert_text5"
+            style="@style/AddAlarm_popup_item_text"
+            android:text="@string/stoptype_math" />
+
+
+        <RadioButton
+            android:id="@+id/stoptype_id_mathbox"
+            style="@style/AddAlarm_popup_item_checkbox"
+            android:layout_alignBottom="@id/alert_text5" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/stoptype_id_okbtm"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/addalarm_ok_btm"
+        android:text="@string/alerdialog_ok"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

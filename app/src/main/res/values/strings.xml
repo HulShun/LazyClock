@@ -1,0 +1,122 @@
+<resources>
+    <string name="app_name">懒人闹钟</string>
+    <string name="add_alarmText">添加闹钟</string>
+    <string name="add_complete">完 成</string>
+    <string name="add_reset">重 置</string>
+    <string name="add_mins">分</string>
+    <string name="add_hours">时</string>
+    <string name="add_dayselect">选择日期：</string>
+    <string name="add_repeat">重复</string>
+    <string name="add_alarmName">闹钟名称：</string>
+    <string name="add_name1">我的闹钟01</string>
+    <string name="add_vibrator">震动</string>
+    <string name="add_close">关闭</string>
+    <string name="add_open">开启</string>
+    <string name="add_ringtonSelect">响铃方式：</string>
+    <string name="add_rington">铃声</string>
+    <string name="add_volume">闹铃音量：</string>
+    <string name="add_volume_num">50%</string>
+    <string name="add_stopAlarmTpye">停止闹钟方式：</string>
+    <string name="stoptype_math">数学解题</string>
+    <string name="add_moreSleepType">小睡模式</string>
+    <string name="add_moreSleepMessage">按任意键进入小睡</string>
+    <string name="add_moreSleepTime">小睡时间:</string>
+    <string name="add_moreSleepTimeMsg">分钟</string>
+    <string name="add_preview">预览闹钟</string>
+
+    <string name="head_title">编辑头像和昵称</string>
+    <string name="head_headText">头像</string>
+    <string name="head_nicName">昵称</string>
+
+    <string name="editName_title">编辑昵称</string>
+
+    <string name="save">保存</string>
+
+    <string name="main_nextAlarm">下一次闹铃</string>
+    <string name="main_noAlarm">没有闹钟</string>
+    <string name="main_hint2">温馨提示：</string>
+    <string name="main_weatherMsg">点击加载天气</string>
+    <string name="main_watherTitle">天气情况</string>
+    <string name="main_myAlarmMsg">我的闹钟：</string>
+    <string name="main_msg1">你已经坚持起床</string>
+    <string name="main_msg2">天了</string>
+    <string name="main_level">Lv21</string>
+    <string name="main_userName">用户名</string>
+
+    <string name="noclock_msg">您还没有设置任何闹钟！</string>
+
+    <string name="main_item_num">01</string>
+    <string name="main_item_week">星期三</string>
+    <string name="main_item_time">08:00</string>
+    <string name="main_item_last">离目前还有几分钟</string>
+
+    <string name="setting_title">更多功能</string>
+    <string name="setting_setPassWords">设置锁定密码</string>
+    <string name="setting_backup">备份闹钟</string>
+    <string name="setting_recover">恢复闹钟</string>
+    <string name="setting_idea">意见反馈</string>
+    <string name="setting_about">关于我们</string>
+
+    <string name="backup_msg">是否确定保存闹钟列表？</string>
+
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+
+    <string name="lock_msg">请输入四位数密码</string>
+
+    <string name="code_msg">请输入正确的验证码关闭闹钟</string>
+    <string name="code_msg2">开始输入</string>
+
+    <string name="cancleAlarm">退出闹钟</string>
+
+    <string name="code_codeMsg">验证码：</string>
+    <string name="code_codeMsg2">输入下图中的字符，不区分大小写</string>
+
+    <string name="stop_msg">答对3题关闭闹钟</string>
+    <string name="stop_msg2">开始答题</string>
+    <string name="stop_question">题目：</string>
+    <string name="stop_A">A</string>
+
+    <string name="shake_msg">连续摇晃手机10秒关闭闹钟</string>
+    <string name="shake_msg2">开始摇晃</string>
+
+    <string name="touch_msg">轻触屏幕关闭闹铃</string>
+
+    <string name="weather_notice">今日天气</string>
+    <string name="weather_no">N/A</string>
+    <string name="weather_notice2">空气质量</string>
+    <string name="weather_item_day">12月8日   星期二</string>
+    <string name="weather_item_tmp">22°C</string>
+    <string name="weather_item_text">中雨</string>
+
+    <string name="recyclerview_selection1">修 改 闹 钟</string>
+    <string name="recyclerview_selection2">关 闭 闹 钟</string>
+    <string name="recyclerview_selection3">删 除 闹 钟</string>
+    <string name="recyclerview_selection2_1">开 启 闹 钟</string>
+    <string name="recyclerview_check">确定永久删除此闹钟吗？</string>
+
+    <string name="ringtype_silent">静音</string>
+    <string name="ringtype_ring">铃声</string>
+    <string name="ringtype_default">默认</string>
+    <string name="alerdialog_ok">确 定</string>
+
+    <string name="stoptype_touch">轻触</string>
+    <string name="stoptype_shake">摇晃</string>
+    <string name="stoptype_code">验证码</string>
+
+    <string name="volume_min">0</string>
+    <string name="volume_max">100</string>
+    <string name="volume_now">75</string>
+    <string name="volume_msg">音量增强</string>
+
+    <string name="popup_time1">30s</string>
+    <string name="popup_time2">1min</string>
+    <string name="popup_time3">3mins</string>
+    <string name="popup_time4">5mins</string>
+    <string name="popup_time5">10min</string>
+    <string name="popup_time6">15mins</string>
+    <string name="popup_time7">20mins</string>
+    <string name="popup_time8">30mins</string>
+
+
+</resources>

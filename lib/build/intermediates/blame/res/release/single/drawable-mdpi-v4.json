@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\crop__ic_cancel.png",
+        "source": "E:\\workspace\\LazyClock\\lib\\src\\main\\res\\drawable-mdpi\\crop__ic_cancel.png"
+    },
+    {
+        "merged": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\crop__divider.9.png",
+        "source": "E:\\workspace\\LazyClock\\lib\\src\\main\\res\\drawable-mdpi\\crop__divider.9.png"
+    },
+    {
+        "merged": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\crop__ic_done.png",
+        "source": "E:\\workspace\\LazyClock\\lib\\src\\main\\res\\drawable-mdpi\\crop__ic_done.png"
+    }
+]

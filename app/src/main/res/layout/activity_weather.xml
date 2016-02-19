@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/weather_bg1"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/mainheadbar"
+        android:paddingLeft="10dp">
+
+        <Button
+            android:id="@+id/weather_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/transparent"
+            android:text="天气提示"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/weather_id_back"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/addalarm_back" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="@color/weather_bg2">
+
+        <TextView
+            android:id="@+id/weather_today_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"
+            android:text="N/A"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/weather_nouse_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/weather_today_text"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/weather_notice"
+            android:textColor="@color/weather_text1"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/weather_tmp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/weather_nouse_today"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/weather_no"
+            android:textColor="@color/weather_text1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/weather_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/weather_nouse_today"
+            android:layout_marginLeft="9dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/weather_tmp"
+            android:text="@string/weather_no"
+            android:textColor="@color/weather_text1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/weather_nouse_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/weather_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@id/weather_text"
+            android:text="@string/weather_notice2"
+            android:textColor="@color/weather_text2"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/weather_airquality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/weather_text"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@id/weather_nouse_text"
+            android:text="@string/weather_no"
+            android:textColor="@color/weather_text2"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/weather_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/weather_text"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="9dp"
+            android:layout_toRightOf="@id/weather_airquality"
+            android:text="@string/weather_no"
+            android:textColor="@color/weather_text2"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/weather_line" />
+
+        <ImageView
+            android:id="@+id/weather_image"
+            android:layout_width="85dp"
+            android:layout_height="81dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="21dp"
+            android:src="@drawable/weather_image002" />
+
+        <TextView
+            android:id="@+id/weather_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/weather_text"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@id/weather_image"
+            android:text="@string/weather_no"
+            android:textColor="@color/weather_text2"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/weather_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:background="@color/weather_line2">
+
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item_id_bg"
+    android:layout_width="match_parent"
+    android:layout_height="87dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/item_onoff"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingTop="19dp">
+
+    <TextView
+        android:id="@+id/list_item_id_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="@string/main_item_num"
+        android:textColor="#ff7f00"
+        android:textSize="24sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/list_item_id_id"
+        android:paddingLeft="25dp">
+
+        <TextView
+            android:id="@+id/list_item_id_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_item_week"
+            android:textColor="#323232"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/list_item_id_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:layout_toRightOf="@id/list_item_id_day"
+            android:text="@string/main_item_time"
+            android:textColor="#323232"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/list_item_id_clock"
+            android:layout_width="17dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@id/list_item_id_time"
+            android:background="@drawable/main_item_click_on" />
+
+        <TextView
+            android:id="@+id/list_item_lasttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/list_item_id_day"
+            android:layout_marginTop="10dp"
+            android:text="@string/main_item_last"
+            android:textColor="#323232"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/list_item_id_image"
+        android:layout_width="31dp"
+        android:layout_height="55dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/main_item_stop_code" />
+</RelativeLayout>

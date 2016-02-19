@@ -1,0 +1,191 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@drawable/transparent</item>
+        <!-- //去边框(对于activity) -->
+        <item name="android:windowBackground">@drawable/transparent</item>
+        <item name="android:windowFrame">@null</item>  <!-- //去边框 -->
+        <item name="android:backgroundDimEnabled">true</item>    <!-- //设置背景变暗 -->
+        <item name="android:windowIsTranslucent">false</item>  <!-- //设置半透明 -->
+    </style>
+
+    <style name="LoginSplash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
+    <!--重置和完成按钮-->
+    <style name="AddAlarm_btm">
+        <item name="android:layout_width">110dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginLeft">9dp</item>
+        <item name="android:layout_marginRight">9dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!--星期盒子-->
+    <style name="AddAlarm_checkbox">
+        <item name="android:layout_width">42dp</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:background">@drawable/addalarm_week_check</item>
+        <item name="android:button">@null</item>
+    </style>
+
+    <!--星期盒子中的文字-->
+    <style name="AddAlarm_checkbox_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:focusable">false</item>
+        <item name="android:textColor">@color/addalarm_week_unselect</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--单个选择项-->
+    <style name="AddAlarm_layout">
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">9dp</item>
+        <item name="android:paddingRight">9dp</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+
+    <!--文字1-->
+    <style name="AddAlarm_layout_firsttext">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/main_listselect_text</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--文字2-->
+    <style name="AddAlarm_layout_secondtext">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:textColor">@color/addalarm_second</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--右边箭头-->
+    <style name="AddAlarm_layout_arrows">
+        <item name="android:layout_width">11dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/addalarm_right</item>
+    </style>
+
+    <!--分割线-->
+    <style name="AddAlarm_layout_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">5dp</item>
+        <item name="android:background">@color/addalarm_divider</item>
+    </style>
+
+    <!--铃声设置中的弹窗的item-->
+    <style name="AddAlarm_popup_item">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">54dp</item>
+        <item name="android:paddingLeft">23dp</item>
+        <item name="android:paddingRight">23dp</item>
+
+    </style>
+
+    <!--铃声设置中弹窗的确定键-->
+    <style name="AddAlarm_popup_ok">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingTop">13dp</item>
+        <item name="android:text">确 定</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/addalarm_ok_btm</item>
+    </style>
+
+    <!--铃声设置中弹窗文字-->
+    <style name="AddAlarm_popup_item_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/addalarm_second</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <!--铃声设置中弹窗checkbox-->
+    <style name="AddAlarm_popup_item_checkbox">
+        <item name="android:layout_width">21dp</item>
+        <item name="android:layout_height">21dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:background">@drawable/addalarm_checkbox</item>
+        <item name="android:button">@null</item>
+        <item name="android:checked">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+    <!--开关-->
+    <style name="AddAlarm_switch">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@drawable/addalarm_swith</item>
+        <item name="android:button">@null</item>
+        <item name="android:checked">true</item>
+    </style>
+
+    <style name="ImageScale" parent="android:Theme.Holo.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/AnimHead</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowFullscreen">false</item>
+        <!-- 设置全屏显示 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 边框 -->
+        <item name="android:windowIsFloating">false</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 模糊 -->
+    </style>
+
+    <style name="AnimHead" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@animator/head_in</item>
+        <item name="android:windowExitAnimation">@animator/head_out</item>
+    </style>
+
+
+    <!--快速闹钟按钮风格-->
+    <style name="qiuckAlarm">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/popupwindows_main_seletor</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:textColor">@color/mainbg</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+</resources>

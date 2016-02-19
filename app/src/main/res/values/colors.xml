@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="addalarm_bg">#e6e6e6</color>
+
+    <color name="mainheadbar">#364351</color>
+    <color name="mainbg">#e6e6e6</color>
+    <color name="menus_bg">#501e1e1e</color>
+    <color name="main_listselect_text">#323232</color>
+
+    <color name="moresetting_text1">#323232</color>
+    <color name="moresetting_top_text">#ffffff</color>
+    <color name="moresetting_select">#e6e6e6</color>
+    <color name="moresetting_ok">#ffffff</color>
+    <color name="moresetting_no">#323232</color>
+
+    <color name="weather_text1">#323232</color>
+    <color name="weather_text2">#787878</color>
+    <color name="weather_bg1">#e6e6e6</color>
+    <color name="weather_bg2">#ffffff</color>
+    <color name="weather_line">#7b8187</color>
+    <color name="weather_line2">#e6e6e6</color>
+
+    <color name="edit_head_text1">#323232</color>
+    <color name="edit_head_text2">#646464</color>
+
+    <color name="main_item_id_unwork">#646464</color>
+    <color name="main_item_id_work">#ff7f00</color>
+
+    <color name="edit_head_name_text2">#ff7f00</color>
+    <color name="white">#ffffff</color>
+
+    <color name="addalarm_bar">#364351</color>
+    <color name="addalarm_second">#949494</color>
+    <color name="addalarm_week_unselect">#ff7f00</color>
+    <color name="addalarm_divider">#dcdcdc</color>
+
+    <color name="seekbar_num">#969696</color>
+    <color name="numberpicker_divider">#00000000</color>
+    <color name="edit_head_bg">#f1f1f1</color>
+
+    <color name="popupwindows_select">#ff7f00</color>
+    <color name="popupwindows_unselect">@android:color/transparent</color>
+
+    <color name="stop_btm">#ff7f00</color>
+    <color name="stop_text1">#323232</color>
+    <color name="stop_text2">#646464</color>
+</resources>

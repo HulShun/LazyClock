@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\crop__tile.png",
+        "source": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\crop__tile.png"
+    },
+    {
+        "merged": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\crop__ic_done.png",
+        "source": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\crop__ic_done.png"
+    },
+    {
+        "merged": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\crop__divider.9.png",
+        "source": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\crop__divider.9.png"
+    },
+    {
+        "merged": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\crop__ic_cancel.png",
+        "source": "E:\\workspace\\LazyClock\\lib\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\crop__ic_cancel.png"
+    }
+]

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="275dp"
+    android:layout_height="180dp"
+    android:background="@drawable/addalarm_popup_bg"
+    android:orientation="vertical">
+
+    <SeekBar
+        android:id="@+id/volume_id_seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="19dp"
+        android:maxHeight="6dp"
+        android:minHeight="6dp"
+        android:progress="75"
+        android:progressDrawable="@drawable/addalarm_volume_seekbar_bg"
+        android:thumb="@drawable/addalarm_volume_progress_btm" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/volume_min"
+            android:textColor="@color/seekbar_num"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/volume_id_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/volume_now"
+            android:textColor="@color/seekbar_num"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/volume_msg"
+            android:textColor="@color/main_listselect_text"
+            android:textSize="17sp" />
+
+        <CheckBox
+            android:id="@+id/volume_id_check"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_alignBottom="@+id/text1"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/text1"
+            android:layout_toStartOf="@+id/text1"
+            android:background="@drawable/addalarm_volume_checkbox"
+            android:button="@null"
+            android:checked="true" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/volume_id_button"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/addalarm_ok_btm"
+        android:text="@string/alerdialog_ok"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</LinearLayout>

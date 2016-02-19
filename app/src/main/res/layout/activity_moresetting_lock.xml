@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="275dp"
+    android:layout_height="170dp"
+    android:background="@drawable/addalarm_popup_bg"
+    android:orientation="vertical"
+    android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/lock_Text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/lock_msg" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/lock_editText1"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:background="@drawable/moresetting_lock_password_bg"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:inputType="numberPassword"
+            android:maxLength="1"
+            android:paddingLeft="3dp" />
+
+        <EditText
+            android:id="@+id/lock_editText2"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/moresetting_lock_password_bg"
+            android:gravity="center"
+            android:inputType="numberPassword"
+            android:maxLength="1"
+            android:paddingLeft="3dp" />
+
+        <EditText
+            android:id="@+id/lock_editText3"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/moresetting_lock_password_bg"
+            android:gravity="center"
+            android:inputType="numberPassword"
+            android:maxLength="1"
+            android:paddingLeft="3dp" />
+
+        <EditText
+            android:id="@+id/lock_editText4"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/moresetting_lock_password_bg"
+            android:gravity="center"
+            android:inputType="numberPassword"
+            android:maxLength="1"
+            android:paddingLeft="3dp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:id="@+id/lock_ok"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/moresetting_ok_selector"
+            android:text="@string/ok"
+            android:textColor="@color/moresetting_ok" />
+
+        <Button
+            android:id="@+id/lock_no"
+            android:layout_width="100dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/moresetting_no_selector"
+            android:text="@string/cancel"
+            android:textColor="@color/moresetting_no" />
+
+    </RelativeLayout>
+</LinearLayout>

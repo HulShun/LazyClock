@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="275dp"
+    android:layout_height="170dp"
+    android:background="@drawable/addalarm_popup_bg"
+    android:orientation="vertical"
+    android:paddingTop="5dp">
+
+    <RelativeLayout
+        android:id="@+id/alertdialog_id_silentbtm"
+        style="@style/AddAlarm_popup_item">
+
+        <TextView
+            android:id="@+id/alert_text1"
+            style="@style/AddAlarm_popup_item_text"
+            android:text="@string/ringtype_silent" />
+
+        <RadioButton
+            android:id="@+id/alertdialog_id_silent"
+            style="@style/AddAlarm_popup_item_checkbox"
+            android:layout_alignBottom="@id/alert_text1" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/alertdialog_id_ringbtm"
+        style="@style/AddAlarm_popup_item">
+
+        <TextView
+            android:id="@+id/alert_text3"
+            style="@style/AddAlarm_popup_item_text"
+            android:text="@string/ringtype_ring" />
+
+
+        <RadioButton
+            android:id="@+id/alertdialog_id_ring"
+            style="@style/AddAlarm_popup_item_checkbox"
+            android:layout_alignBottom="@id/alert_text3"
+            android:checked="true" />
+
+        <TextView
+            android:id="@+id/alertdialog_id_ringtonename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/alert_text3"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/alertdialog_id_ring"
+            android:layout_toRightOf="@id/alert_text3"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/ringtype_default"
+            android:textColor="@color/addalarm_second"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/alertdialog_id_ok"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/addalarm_ok_btm"
+        android:text="@string/alerdialog_ok"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

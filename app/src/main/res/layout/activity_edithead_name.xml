@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/addalarm_bar"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:paddingLeft="9dp"
+        android:paddingRight="9dp"
+        android:paddingTop="10dp">
+
+        <Button
+            android:id="@+id/edithead_name_id_back"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/addalarm_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/editName_title"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/edithead_name_id_ok"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="9dp"
+            android:background="@drawable/addalarm_ok_btm"
+            android:text="@string/save"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/edithead_name_id_edit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/addalarm_edit_bg"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9dp"
+        android:layout_marginTop="5dp"
+
+        android:text="起个好听的名字吧"
+        android:textColor="@color/edit_head_name_text2"
+        android:textSize="14sp" />
+
+
+</LinearLayout>
+
+

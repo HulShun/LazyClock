@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="170dp"
+    android:background="@drawable/addalarm_popup_bg"
+    android:orientation="vertical"
+    android:paddingTop="20dp">
+
+    <SeekBar
+        android:id="@+id/sleeptime_id_seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:progress="25"
+        android:progressDrawable="@drawable/addalarm_sleeptime_seekbar_bg"
+        android:thumb="@drawable/addalarm_sleeptime_thumb01" />
+
+    <ImageView
+        android:id="@+id/imageview1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/sleeptime_id_seekBar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/addalarm_sleeptime_bg" />
+
+
+    <Button
+        android:id="@+id/sleeptime_id_button"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_below="@id/imageview1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/addalarm_ok_btm"
+        android:text="@string/alerdialog_ok"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</RelativeLayout>

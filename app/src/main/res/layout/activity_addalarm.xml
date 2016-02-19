@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/addalarm_bg">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/addalarm_bar"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:paddingLeft="9dp"
+        android:paddingTop="10dp">
+
+        <Button
+            android:id="@+id/addalarm_id_back"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/addalarm_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/add_alarmText"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/addalarm_buttomlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/addalarm_id_reset"
+            style="@style/AddAlarm_btm"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/addalarm_reset"
+            android:text="@string/add_reset" />
+
+        <Button
+            android:id="@+id/addalarm_id_ok"
+            style="@style/AddAlarm_btm"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/addalarm_done"
+            android:text="@string/add_complete" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/addalarm_id_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/addalarm_buttomlayout"
+        android:layout_below="@id/relativeLayout1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--时间选择-->
+            <LinearLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_horizontal"
+                android:paddingTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="171dp"
+                    android:layout_height="121dp"
+                    android:background="@drawable/addalarm_numpicker_left">
+
+                    <NumberPicker
+                        android:id="@+id/addalarm_id_hours"
+                        android:layout_width="130dp"
+                        android:layout_height="121dp" />
+
+                    <TextView
+                        android:id="@+id/hours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/addalarm_id_hours"
+                        android:text="@string/add_hours"
+                        android:textColor="@color/main_listselect_text"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="171dp"
+                    android:layout_height="121dp"
+                    android:background="@drawable/addalarm_numpicker_right"
+                    android:paddingLeft="3dp">
+
+                    <NumberPicker
+                        android:id="@+id/addalarm_id_mins"
+                        android:layout_width="130dp"
+                        android:layout_height="121dp" />
+
+                    <TextView
+                        android:id="@+id/mins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/addalarm_id_mins"
+                        android:text="@string/add_mins"
+                        android:textColor="@color/main_listselect_text"
+                        android:textSize="15sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--星期选择-->
+            <RelativeLayout
+                android:id="@+id/relativeLayout_week"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="17dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
+                android:paddingTop="17dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/add_dayselect"
+                    android:textColor="@color/main_listselect_text"
+                    android:textSize="18sp" />
+
+
+                <CheckBox
+                    android:id="@+id/addalarm_id_repeatwicth"
+                    style="@style/AddAlarm_switch" />
+
+                <TextView
+                    android:id="@+id/addalarm_id_repeat_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/addalarm_id_repeatwicth"
+                    android:text="@string/add_repeat"
+                    android:textColor="@color/addalarm_second"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <!--星期-->
+            <LinearLayout
+                android:id="@+id/relativeLayout_week2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relativeLayout_week"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <CheckBox
+                        android:id="@+id/addalarm_id_mon"
+                        style="@style/AddAlarm_checkbox" />
+
+                    <TextView
+                        android:id="@+id/addalarm_id_montext"
+                        style="@style/AddAlarm_checkbox_text"
+                        android:text="周一" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <CheckBox
+                        android:id="@+id/addalarm_id_tue"
+                        style="@style/AddAlarm_checkbox" />
+
+                    <TextView
+                        android:id="@+id/addalarm_id_tuetext"
+                        style="@style/AddAlarm_checkbox_text"
+                        android:text="周二" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <CheckBox
+                        android:id="@+id/addalarm_id_wen"
+                        style="@style/AddAlarm_checkbox" />
+
+                    <TextView
+                        android:id="@+id/addalarm_id_wentext"
+                        style="@style/AddAlarm_checkbox_text"
+                        android:text="周三" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <CheckBox
+                        android:id="@+id/addalarm_id_thu"
+                        style="@style/AddAlarm_checkbox" />
+
+                    <TextView
+                        android:id="@+id/addalarm_id_thutext"
+                        style="@style/AddAlarm_checkbox_text"
+                        android:text="周四" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <CheckBox
+                        android:id="@+id/addalarm_id_fri"
+                        style="@style/AddAlarm_checkbox" />
+
+                    <TextView
+                        android:id="@+id/addalarm_id_fritext"
+                        style="@style/AddAlarm_checkbox_text"
+                        android:text="周五" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <CheckBox
+
+                        android:id="@+id/addalarm_id_sat"
+                        style="@style/AddAlarm_checkbox" />
+
+                    <TextView
+                        android:id="@+id/addalarm_id_sattext"
+                        style="@style/AddAlarm_checkbox_text"
+                        android:text="周六" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <CheckBox
+                        android:id="@+id/addalarm_id_sun"
+                        style="@style/AddAlarm_checkbox" />
+
+                    <TextView
+                        android:id="@+id/addalarm_id_suntext"
+                        style="@style/AddAlarm_checkbox_text"
+                        android:text="周日" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <!--闹钟名称-->
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                style="@style/AddAlarm_layout"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AddAlarm_layout_firsttext"
+                    android:text="@string/add_alarmName" />
+
+                <EditText
+                    android:id="@+id/addalarm_id_alarmname"
+                    android:layout_width="match_parent"
+                    android:layout_height="41dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/addalarm_edit_bg"
+                    android:hint="@string/add_name1"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+
+            <!--震动是否开启-->
+            <RelativeLayout
+                android:id="@+id/relativeLayout3"
+                style="@style/AddAlarm_layout"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/AddAlarm_layout_firsttext"
+                    android:layout_centerVertical="true"
+                    android:text="@string/add_vibrator" />
+
+
+                <CheckBox
+                    android:id="@+id/addalarm_id_shankswicth"
+                    style="@style/AddAlarm_switch" />
+
+                <TextView
+                    android:id="@+id/addalarm_id_shank_text"
+                    style="@style/AddAlarm_layout_secondtext"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/addalarm_id_shankswicth"
+                    android:text="@string/add_close"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <!--铃声方式-->
+            <RelativeLayout
+                android:id="@+id/addalarm_id_ringselect"
+                style="@style/AddAlarm_layout"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/AddAlarm_layout_firsttext"
+                    android:text="@string/add_ringtonSelect" />
+
+                <TextView
+                    android:id="@+id/addalarm_id_alarmtype"
+                    style="@style/AddAlarm_layout_secondtext"
+                    android:layout_below="@id/textView"
+                    android:layout_marginTop="5dp"
+                    android:focusable="false"
+                    android:text="@string/add_rington" />
+
+                <ImageView style="@style/AddAlarm_layout_arrows" />
+            </RelativeLayout>
+
+            <!--闹铃音量-->
+            <RelativeLayout
+                android:id="@+id/addalarm_id_volume"
+                style="@style/AddAlarm_layout"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/AddAlarm_layout_firsttext"
+                    android:text="@string/add_volume" />
+
+                <TextView
+                    android:id="@+id/addalarm_id_volumetext"
+                    style="@style/AddAlarm_layout_secondtext"
+                    android:text="@string/add_volume_num" />
+
+                <ImageView
+                    android:layout_width="11dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/addalarm_right" />
+            </RelativeLayout>
+
+
+            <!--停止闹铃方式-->
+            <RelativeLayout
+                android:id="@+id/addalarm_id_alarmstoptype"
+                style="@style/AddAlarm_layout"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/AddAlarm_layout_firsttext"
+                    android:text="@string/add_stopAlarmTpye" />
+
+                <TextView
+                    android:id="@+id/addalarm_id_alarmstop"
+                    style="@style/AddAlarm_layout_secondtext"
+                    android:hint="@string/stoptype_math" />
+
+                <ImageView
+                    android:layout_width="11dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/addalarm_right" />
+            </RelativeLayout>
+
+
+            <!--小睡是否开启-->
+            <RelativeLayout
+                android:id="@+id/relativeLayout6"
+                style="@style/AddAlarm_layout"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    style="@style/AddAlarm_layout_firsttext"
+                    android:text="@string/add_moreSleepType" />
+
+                <TextView
+                    style="@style/AddAlarm_layout_secondtext"
+                    android:text="@string/add_moreSleepMessage" />
+
+                <CheckBox
+                    android:id="@+id/addalarm_id_sleepswicth"
+                    style="@style/AddAlarm_switch"
+                    android:checked="false" />
+
+                <TextView
+                    android:id="@+id/addalarm_id_sleep_text"
+                    style="@style/AddAlarm_layout_secondtext"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@id/addalarm_id_sleepswicth"
+                    android:text="@string/add_close"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+
+            <!--小睡时间-->
+            <RelativeLayout
+                android:id="@+id/addalarm_id_sleeptime"
+                style="@style/AddAlarm_layout"
+                android:layout_below="@id/relativeLayout6"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AddAlarm_layout_firsttext"
+                    android:text="@string/add_moreSleepTime" />
+
+                <TextView
+                    android:id="@+id/addalarm_id_sleeptimetext"
+                    style="@style/AddAlarm_layout_secondtext"
+                    android:text="@string/add_moreSleepTimeMsg" />
+
+                <ImageView
+                    android:layout_width="11dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/addalarm_right" />
+            </RelativeLayout>
+
+
+            <!--预览闹钟-->
+            <RelativeLayout
+                android:id="@+id/addalarm_id_preview"
+                style="@style/AddAlarm_layout"
+                android:layout_height="58dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/AddAlarm_layout_firsttext"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="5dp"
+                    android:text="@string/add_preview" />
+
+                <ImageView
+                    android:layout_width="11dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/addalarm_right" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+
+
