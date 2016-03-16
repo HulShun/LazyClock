@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainbg"
-    tools:context=".acitivities.MainActivity">
+    tools:context=".view.acitivities.MainActivity">
 
     <RelativeLayout
         android:id="@+id/mian_topPanel"
@@ -102,7 +102,7 @@
     <!-- border_outside_color 外部圆圈的颜色 -->
     <!-- border_inside_color 内部部圆圈的颜色 -->
     <!-- border_thickness 外圆和内圆的宽度 -->
-    <com.example.lazyclock.customview.RoundImageView
+    <com.example.lazyclock.view.customview.RoundImageView
         android:id="@+id/main_id_myhead"
         android:layout_width="97dp"
         android:layout_height="97dp"
@@ -259,7 +259,8 @@
         android:layout_below="@id/mian_topPanel"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="36dp">
+        android:layout_marginTop="36dp"
+        android:overScrollMode="never">
 
     </android.support.v7.widget.RecyclerView>
 

@@ -5,9 +5,10 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
-import com.example.lazyclock.AlarmState;
+import com.example.lazyclock.Config;
 import com.example.lazyclock.MyApplication;
 import com.example.lazyclock.bean.AlarmBean;
+import com.example.lazyclock.utils.AlarmUtil;
 import com.example.lazyclock.utils.LogUtil;
 
 /**
@@ -25,10 +26,10 @@ public class AlarmService extends Service {
         LogUtil.d("service", "开启了删除闹钟的服务");
         mAlarm = intent.getParcelableExtra("mAlarm");
         mApp = (MyApplication) getApplication();
-        mApp.deleteAlarm(this, mAlarm);
+        AlarmUtil.getInstence().deleteAlarm(mApp, mAlarm);
 
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        manager.cancel(AlarmState.SERVICE_DEL);
+        manager.cancel(Config.SERVICE_DEL);
 
         return super.onStartCommand(intent, flags, startId);
     }

@@ -39,7 +39,7 @@
 
         <!-- login界面 -->
         <activity
-            android:name=".acitivities.LoginActivity"
+            android:name=".view.acitivities.LaunchActivity"
             android:theme="@style/LoginSplash">
 
             <intent-filter>
@@ -49,51 +49,51 @@
         </activity>
 
         <!-- 主页 -->
-        <activity android:name=".acitivities.MainActivity" />
+        <activity android:name=".view.acitivities.MainActivity" />
         <activity
-            android:name=".acitivities.ItemClickActivity"
+            android:name=".view.acitivities.ItemClickActivity"
             android:theme="@style/Dialog" />
         <!-- 头像昵称修改入口 -->
-        <activity android:name=".acitivities.headportrait.EditHeadActivity" />
-        <activity android:name=".acitivities.headportrait.EditNikNameActivity" />
+        <activity android:name=".view.acitivities.headportrait.EditHeadActivity" />
+        <activity android:name=".view.acitivities.headportrait.EditNikNameActivity" />
         <activity
-            android:name=".acitivities.headportrait.ShowLargeHeadActivity"
+            android:name=".view.acitivities.headportrait.ShowLargeHeadActivity"
             android:theme="@style/ImageScale" />
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
 
         <!-- 天气详情页 -->
-        <activity android:name=".acitivities.WeatherActivity" />
+        <activity android:name=".view.acitivities.WeatherActivity" />
         <!-- 设置页 -->
-        <activity android:name=".acitivities.settings.MainSettingActivity" />
+        <activity android:name=".view.acitivities.settings.MainSettingActivity" />
         <!-- 密码设置页 -->
         <activity
-            android:name=".acitivities.settings.LockActivity"
+            android:name=".view.acitivities.settings.LockActivity"
             android:theme="@style/Dialog" />
 
         <!-- 添加闹铃 -->
-        <activity android:name=".acitivities.addalarm.AddAlarmActivity" />
+        <activity android:name=".view.acitivities.addalarm.AddAlarmActivity" />
 
         <!-- 添加闹铃——铃声设置 -->
         <activity
-            android:name=".acitivities.addalarm.RingTpyeActivity"
+            android:name=".view.acitivities.addalarm.RingTpyeActivity"
             android:theme="@style/Dialog" />
         <!-- 添加闹铃——音乐设置 -->
         <!-- 音量设置 -->
         <activity
-            android:name=".acitivities.addalarm.VolumeActivity"
+            android:name=".view.acitivities.addalarm.VolumeActivity"
             android:theme="@style/Dialog" />
         <!-- 贪睡时间设置 -->
         <activity
-            android:name=".acitivities.addalarm.SleepTimeActivity"
+            android:name=".view.acitivities.addalarm.SleepTimeActivity"
             android:theme="@style/Dialog" />
         <!-- 闹铃停止设置 -->
         <activity
-            android:name=".acitivities.addalarm.StopTpyeActivity"
+            android:name=".view.acitivities.addalarm.StopTpyeActivity"
             android:theme="@style/Dialog" />
 
         <!-- 触摸关闭响铃界面 -->
         <activity
-            android:name=".acitivities.stopalarm.TouchStopActivity"
+            android:name=".view.acitivities.stopalarm.TouchStopActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|navigation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
@@ -101,7 +101,7 @@
             android:theme="@android:style/Theme.Wallpaper.NoTitleBar" />
         <!-- 验证码关闭响铃界面 -->
         <activity
-            android:name=".acitivities.stopalarm.CodeStopActivity"
+            android:name=".view.acitivities.stopalarm.CodeStopActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|navigation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
@@ -109,7 +109,7 @@
             android:theme="@android:style/Theme.Wallpaper.NoTitleBar" />
         <!-- 摇晃关闭响铃界面 -->
         <activity
-            android:name=".acitivities.stopalarm.ShakeStopActivity"
+            android:name=".view.acitivities.stopalarm.ShakeStopActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|navigation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
@@ -117,7 +117,7 @@
             android:theme="@android:style/Theme.Wallpaper.NoTitleBar" />
         <!-- 摇晃关闭响铃界面 -->
         <activity
-            android:name=".acitivities.stopalarm.MathStopActivity"
+            android:name=".view.acitivities.stopalarm.MathStopActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|navigation"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"

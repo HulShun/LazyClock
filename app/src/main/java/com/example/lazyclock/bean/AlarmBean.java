@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.lazyclock.AlarmState;
+import com.example.lazyclock.Config;
 import com.example.lazyclock.utils.FileUtil;
 
 import java.util.List;
@@ -66,10 +66,10 @@ public class AlarmBean implements Parcelable {
 
         // id = new Random().nextInt(1000);
         mTime = "08:00";
-        setFlag(AlarmState.AlARMTYPE_ADD);
+        setFlag(Config.AlARMTYPE_ADD);
         mRing = new Ring();
         //设置默认闹铃
-        mRing.ringType = AlarmState.RINGSELECT_RING;
+        mRing.ringType = Config.RINGSELECT_RING;
         Uri u = RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_ALARM);
         mRing.ringUri = FileUtil.getInstence().getPath(context, u);
         mRing.ringName = "默认";
@@ -80,9 +80,9 @@ public class AlarmBean implements Parcelable {
         setVolumegradual(true);   //音量渐变
         setVolume(75);
         setMoreSleep(false);
-        setSleepType(AlarmState.MORESLEEP_SHAKE);
+        setSleepType(Config.MORESLEEP_SHAKE);
         setMoreSleepMins(5);
-        setStopSleepType(AlarmState.STOPSELECT_CLICK);
+        setStopSleepType(Config.STOPSELECT_CLICK);
     }
 
 

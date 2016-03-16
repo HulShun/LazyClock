@@ -1,21 +1,23 @@
 package com.example.lazyclock.service;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.IBinder;
 import android.os.Vibrator;
 import android.util.Log;
 
-import com.example.lazyclock.AlarmState;
+import com.example.lazyclock.Config;
 import com.example.lazyclock.MyApplication;
-import com.example.lazyclock.acitivities.stopalarm.CodeStopActivity;
-import com.example.lazyclock.acitivities.stopalarm.MathStopActivity;
-import com.example.lazyclock.acitivities.stopalarm.ShakeStopActivity;
-import com.example.lazyclock.acitivities.stopalarm.TouchStopActivity;
 import com.example.lazyclock.bean.AlarmBean;
 import com.example.lazyclock.bean.Ring;
 import com.example.lazyclock.others.MyMediaPlayer;
+import com.example.lazyclock.others.Task.StopTask;
+import com.example.lazyclock.view.acitivities.stopalarm.CodeStopActivity;
+import com.example.lazyclock.view.acitivities.stopalarm.MathStopActivity;
+import com.example.lazyclock.view.acitivities.stopalarm.ShakeStopActivity;
+import com.example.lazyclock.view.acitivities.stopalarm.TouchStopActivity;
 
 import java.util.Timer;
 
@@ -71,7 +73,7 @@ public class RingtongService extends Service {
         mAlarm = intent.getParcelableExtra("Alarm");
 
         //响铃时间过长
-        mTimer = mApp.stopMediaServer(RingtongService.this, mAlarm, RING_TIME);
+        mTimer = stopMediaServer(RingtongService.this, mAlarm, RING_TIME);
 
         //闹钟对象为空或者过期的闹钟，就不响铃
         long temp = mAlarm.getTimeInMills() - System.currentTimeMillis();
@@ -94,19 +96,19 @@ public class RingtongService extends Service {
         //跳转响铃页面
         Intent intent1 = new Intent();
         switch (mAlarm.getStopSleepType()) {
-            case AlarmState.STOPSELECT_CLICK:
+            case Config.STOPSELECT_CLICK:
                 intent1.setClass(RingtongService.this, TouchStopActivity.class);
                 break;
-            case AlarmState.STOPSELECT_CODE:
+            case Config.STOPSELECT_CODE:
                 intent1.setClass(RingtongService.this, CodeStopActivity.class);
                 break;
-            case AlarmState.STOPSELECT_SHANK:
+            case Config.STOPSELECT_SHANK:
                 intent1.setClass(RingtongService.this, ShakeStopActivity.class);
                 break;
-            case AlarmState.STOPSELECT_PIC:
+            case Config.STOPSELECT_PIC:
                 intent1.setClass(RingtongService.this, TouchStopActivity.class);
                 break;
-            case AlarmState.STOPSELECT_MATH:
+            case Config.STOPSELECT_MATH:
                 intent1.setClass(RingtongService.this, MathStopActivity.class);
                 break;
         }
@@ -123,5 +125,10 @@ public class RingtongService extends Service {
         return null;
     }
 
+    public static Timer stopMediaServer(Context context, AlarmBean bean, long delay) {
+        Timer timer = new Timer();
+        timer.schedule(new StopTask(context, bean), delay);
+        return timer;
+    }
 
 }

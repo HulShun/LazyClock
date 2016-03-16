@@ -1,6 +1,6 @@
 package com.example.lazyclock.utils;
 
-import com.example.lazyclock.AlarmState;
+import com.example.lazyclock.Config;
 import com.example.lazyclock.others.CommonException;
 
 import java.io.BufferedReader;
@@ -22,7 +22,7 @@ public class HttpUtil {
 
     public static HttpUtil getInstence() {
         if (util == null) {
-            synchronized (FileUtil.class) {
+            synchronized (HttpUtil.class) {
                 if (util == null) {
                     util = new HttpUtil();
 
@@ -66,7 +66,7 @@ public class HttpUtil {
         BufferedReader reader = null;
         String result = null;
         StringBuffer sbf = new StringBuffer();
-        String httpUrl = AlarmState.WEATHER_PATH + "?city=" + city;
+        String httpUrl = Config.WEATHER_PATH + "?city=" + city;
 
         try {
             URL url = new URL(httpUrl);
@@ -74,7 +74,7 @@ public class HttpUtil {
                     .openConnection();
             connection.setRequestMethod("GET");
             // 填入apikey到HTTP header
-            connection.setRequestProperty("apikey", AlarmState.WEATHER_KAY);
+            connection.setRequestProperty("apikey", Config.WEATHER_KAY);
             connection.connect();
             int m = connection.getResponseCode();
             InputStream is = connection.getInputStream();

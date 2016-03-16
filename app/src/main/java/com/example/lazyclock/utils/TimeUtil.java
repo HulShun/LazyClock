@@ -3,7 +3,7 @@ package com.example.lazyclock.utils;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.lazyclock.AlarmState;
+import com.example.lazyclock.Config;
 import com.example.lazyclock.bean.AlarmBean;
 
 import java.text.ParseException;
@@ -22,7 +22,7 @@ public class TimeUtil {
     private SimpleDateFormat mFormatter;
 
     private TimeUtil() {
-        mFormatter = new SimpleDateFormat(AlarmState.ALARM_DATEFORMAT);
+        mFormatter = new SimpleDateFormat(Config.ALARM_DATEFORMAT);
     }
 
 
@@ -161,7 +161,7 @@ public class TimeUtil {
         calendar.set(Calendar.HOUR_OF_DAY, hours);
         calendar.set(Calendar.MINUTE, mins);
         calendar.set(Calendar.SECOND, 0);
-        Log.d("hours", "完整的时间为:" + new SimpleDateFormat(AlarmState.ALARM_DATEFORMAT).format(calendar.getTime()));
+        Log.d("hours", "完整的时间为:" + new SimpleDateFormat(Config.ALARM_DATEFORMAT).format(calendar.getTime()));
         return calendar.getTimeInMillis();
     }
 

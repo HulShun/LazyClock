@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.lazyclock.AlarmState;
+import com.example.lazyclock.Config;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -18,7 +18,7 @@ public class MathDatabaseHelper extends SQLiteOpenHelper {
 
 
     private String CREATE_TABLE = "create table " +
-            AlarmState.TABLE_NAME +
+            Config.TABLE_NAME +
             "(" +
             "_id  integer primary key autoincrement ," +
             "topic varchar(120) not null ," +
@@ -55,7 +55,7 @@ public class MathDatabaseHelper extends SQLiteOpenHelper {
     //数据库版本更新
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists " + AlarmState.TABLE_NAME);
+        db.execSQL("drop table if exists " + Config.TABLE_NAME);
         onCreate(db);
     }
 

@@ -1,8 +1,10 @@
 package com.example.lazyclock.utils;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -11,8 +13,14 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.example.lazyclock.AlarmState;
+import com.example.lazyclock.Config;
+import com.example.lazyclock.MyApplication;
+import com.example.lazyclock.bean.AlarmBean;
+import com.example.lazyclock.bean.User;
+import com.example.lazyclock.bean.Weather;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 /**
  * Created by Administrator on 2015/12/8.
@@ -37,6 +46,7 @@ public class FileUtil {
 
 
     private static FileUtil util;
+    private static MyApplication app;
 
     private FileUtil() {
 
@@ -52,6 +62,7 @@ public class FileUtil {
             synchronized (FileUtil.class) {
                 if (util == null) {
                     util = new FileUtil();
+                    app = MyApplication.getInstance();
                 }
             }
         }
@@ -114,12 +125,12 @@ public class FileUtil {
     public void dbToPath(Context context, String path) {
         AssetManager am = context.getResources().getAssets();
         try {
-            File newFile = new File(path, AlarmState.DATABASE_NAME);
+            File newFile = new File(path, Config.MATH_DATABASE_NAME);
             if (!newFile.exists()) {
                 newFile.createNewFile();
             }
             OutputStream out = new FileOutputStream(newFile);
-            InputStream in = am.open(AlarmState.DATABASE_NAME);
+            InputStream in = am.open(Config.MATH_DATABASE_NAME);
             byte[] buffer = new byte[1024];
 
             int len;
@@ -234,6 +245,147 @@ public class FileUtil {
 
         return true;
     }
+
+
+    /**
+     * 保存用户设置到本地
+     */
+    public void saveSetting(MyApplication app) {
+        User user = app.getMyUser();
+        SharedPreferences settting = app.getSharedPreferences(Config.PREFERENCES_NAME, Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settting.edit();
+        editor.putBoolean("isFirstTime", app.isFirstTime());
+        editor.putString("name", user.mName);
+        editor.putString("headPath", user.mHeadPath);
+        editor.putString("weatherDay", user.mWeatherDay);
+        editor.putInt("level", user.level);
+        editor.putInt("weakupDays", user.getWeakupDays());
+        editor.putBoolean("isLock", user.isLock);
+        editor.putString("passwords", user.passwordsMD5);
+        editor.apply();
+    }
+
+    public void readSettings(MyApplication app) {
+        SharedPreferences settings = app.getSharedPreferences(Config.PREFERENCES_NAME, Activity.MODE_PRIVATE);
+        User user = new User();
+        app.setFirstTime(settings.getBoolean("isFirstTime", true));
+        user.mName = settings.getString("name", "用户");
+        user.mHeadPath = settings.getString("headPath", null);
+        user.mWeatherDay = settings.getString("weatherDay", null);
+        user.level = settings.getInt("level", 0);
+        user.setWeakUpDays(settings.getInt("weakupDays", 0));
+        user.isLock = settings.getBoolean("isLock", false);
+        user.passwordsMD5 = settings.getString("passwords", null);
+        app.setMyUser(user);
+    }
+
+
+    /**
+     * @param path  路径
+     * @param flags 保存的标识，是保存闹钟还是天气信息
+     */
+    public boolean saveToFile(final MyApplication app, final String path, final int flags) {
+
+        final FileUtil fileUtil = FileUtil.getInstence();
+        final JsonUtil jsonUtil = JsonUtil.getInstence();
+        final boolean flag[] = new boolean[1];
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String json;
+                //闹钟列表写出文件
+
+                if (flags == FileUtil.FLAG_ALARM) {
+                    List<AlarmBean> list = app.getAlarDates();
+                    json = jsonUtil.listToJson(list);
+                    if (json != null) {
+                        flag[0] = fileUtil.jsonToFile(json, path, FileUtil.dataJsonPath);
+                    }
+                }
+                if (flags == FileUtil.FLAG_WEATHER) {
+                    Weather weather = app.getWeather();
+                    //天气情况写出文件
+                    json = jsonUtil.beanToJson(weather);
+                    if (json != null) {
+                        flag[0] = fileUtil.jsonToFile(json, path, FileUtil.weatherJsonPath);
+                    }
+                }
+
+            }
+        }).start();
+
+        return flag[0];
+    }
+
+
+    /**
+     * 将所有保存在本地的数据读取   （线程处理）
+     */
+    public void readFromFile(final MyApplication app, final String path, final int flags) {
+        final FileUtil fileUtil = FileUtil.getInstence();
+        final JsonUtil jsonUtil = JsonUtil.getInstence();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String json;
+                if (flags == FileUtil.FLAG_ALARM) {
+                    LogUtil.d("", "去加载闹钟");
+                    json = fileUtil.jsonFromFile(path, FileUtil.dataJsonPath);
+                    if (json != null) {
+                        app.setAlarDates((List<AlarmBean>) jsonUtil.toObjects(json, new TypeToken<List<AlarmBean>>() {
+                        }.getType()));
+                    }
+                }
+
+                //加载天气
+                if (WeatherUtil.isTodayWeather(app)) {
+                    LogUtil.d("file", "去加载天气");
+                    json = fileUtil.jsonFromFile(app.getDefalut_path(), FileUtil.weatherJsonPath);
+                    if (json != null) {
+                        Weather weather = jsonUtil.toObjects(json, Weather.class);
+                        app.setWeather(weather);
+                    }
+                }
+            }
+        }).start();
+
+    }
+
+    /**
+     * 备份闹钟列表
+     *
+     * @param app
+     * @return
+     */
+    public boolean backupList(MyApplication app) {
+        boolean flag;
+        FileUtil util = FileUtil.getInstence();
+        if (!util.isExtralDir()) {
+            Toast.makeText(app.getApplicationContext(), "外部储存设备不存在！", Toast.LENGTH_LONG).show();
+        }
+        String path = Environment.getExternalStorageDirectory().getPath() + "/LazyClok";
+        flag = util.saveToFile(app, path, FileUtil.FLAG_ALARM);
+        return flag;
+    }
+
+    /**
+     * 恢复闹钟列表
+     *
+     * @param context
+     * @return
+     */
+    public boolean recoverList(MyApplication context) {
+        boolean flag;
+        if (!isExtralDir()) {
+            Toast.makeText(context, "外部储存设备不存在！", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        String path = Environment.getExternalStorageDirectory().getPath() + "/LazyClok";
+        readFromFile(context, path, FileUtil.FLAG_ALARM);
+        return true;
+    }
+
 
     /**
      * Uri中获取真实地址
