@@ -1,4 +1,4 @@
-package com.example.lazyclock.acitivities;
+package com.example.lazyclock.view.acitivities;
 
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
@@ -27,30 +27,30 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lazyclock.AlarmState;
+import com.example.lazyclock.Config;
 import com.example.lazyclock.MyApplication;
 import com.example.lazyclock.R;
-import com.example.lazyclock.acitivities.addalarm.AddAlarmActivity;
-import com.example.lazyclock.acitivities.headportrait.EditHeadActivity;
-import com.example.lazyclock.acitivities.settings.LockActivity;
-import com.example.lazyclock.acitivities.settings.MainSettingActivity;
-import com.example.lazyclock.adapter.AlarmAdapter;
 import com.example.lazyclock.bean.AlarmBean;
 import com.example.lazyclock.bean.User;
 import com.example.lazyclock.bean.Weather;
-import com.example.lazyclock.customview.DividerItemDecoration;
-import com.example.lazyclock.customview.RoundImageView;
 import com.example.lazyclock.others.OnTimeChangedListener;
+import com.example.lazyclock.others.Task.DifferTimeTask;
+import com.example.lazyclock.others.Task.QuickTimeTextTask;
+import com.example.lazyclock.utils.AlarmUtil;
 import com.example.lazyclock.utils.FileUtil;
-import com.example.lazyclock.utils.LogUtil;
 import com.example.lazyclock.utils.TimeUtil;
 import com.example.lazyclock.utils.WeatherUtil;
+import com.example.lazyclock.view.acitivities.addalarm.AddAlarmActivity;
+import com.example.lazyclock.view.acitivities.headportrait.EditHeadActivity;
+import com.example.lazyclock.view.acitivities.settings.LockActivity;
+import com.example.lazyclock.view.acitivities.settings.MainSettingActivity;
+import com.example.lazyclock.view.adapter.AlarmAdapter;
+import com.example.lazyclock.view.customview.DividerItemDecoration;
+import com.example.lazyclock.view.customview.RoundImageView;
 
 import java.io.File;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
@@ -86,7 +86,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private PopupWindow mLastingwindow;
     private CheckBox mQiuckBtn1, mQiuckBtn2, mQiuckBtn3, mQiuckBtn4, mQiuckBtn5, mQiuckBtn6, mQiuckBtn7, mQiuckBtn8;
     private TextView mQiuckLastTime;
+    /**
+     * 快速闹铃的计时器
+     */
     private Timer mTimer;
+    private boolean isTimerWork;
+    /**
+     * 后台计算闹铃剩余时间的计时器
+     */
+    private Timer mLastTimer;
+    private DifferTimeTask mDifferTimeTask;
+    private boolean isTaskWork;
+
     private QuickTimeTextTask mTask;
     /**
      * 侧边栏
@@ -113,6 +124,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initData() {
         mApp = (MyApplication) getApplication();
         mAlarmBeanList = mApp.getAlarDates();
+
+        //后台剩余时间计算
+        mLastTimer = new Timer();
+        mDifferTimeTask = new DifferTimeTask(mApp);
+
+        mLastTimer.schedule(mDifferTimeTask, 0, 30 * 1000);
+
         if (mAlarmBeanList != null && !mAlarmBeanList.isEmpty()) {
             initRecyclerView(mAlarmBeanList);
         } else {
@@ -122,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mWeather = mApp.getWeather();
         mWeatherUtil = new WeatherUtil(this);
 
-        myHandler.sendEmptyMessage(AlarmState.UPDATE_UI_LISTVIEW);
+        myHandler.sendEmptyMessage(Config.UPDATE_UI_LISTVIEW);
         //坚持起床了几天
         String temp = String.valueOf(myUser.getWeakupDays());
         if (temp.equals("")) {
@@ -188,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 Intent in = new Intent(MainActivity.this, ItemClickActivity.class);
                 in.putExtra("Alarm", mAlarmBeanList.get(position));
-                startActivityForResult(in, AlarmState.AlARMTYPE_EDIT);
+                startActivityForResult(in, Config.AlARMTYPE_EDIT);
             }
         });
         mRecyclerView.setAdapter(mAdapter);
@@ -196,14 +214,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initEvent() {
 
-        mApp.setOnAlarmChangedListener(new OnTimeChangedListener() {
+        mDifferTimeTask.setOnTimeChangedListener(new OnTimeChangedListener() {
             @Override
             public void onTimeChange(List<AlarmBean> data) {
                 mAlarmBeanList = data;
                 //刷新UI
                 Log.d("时间改变", "剩余时间修改");
-                myHandler.sendEmptyMessage(AlarmState.UPDATE_UI_LISTVIEW);
-                myHandler.sendEmptyMessage(AlarmState.UPDATE_UI_LISTVIEWBG);
+                myHandler.sendEmptyMessage(Config.UPDATE_UI_LISTVIEW);
+                myHandler.sendEmptyMessage(Config.UPDATE_UI_LISTVIEWBG);
             }
         });
 
@@ -217,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, WeatherActivity.class);
-                startActivityForResult(intent, AlarmState.WEATHER_FLAG);
+                startActivityForResult(intent, Config.WEATHER_FLAG);
             }
         });
 
@@ -255,8 +273,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     mLockBtn.setChecked(true);
                     Intent intent = new Intent(MainActivity.this, LockActivity.class);
-                    intent.setFlags(AlarmState.CHECK_PASSWORDS);
-                    startActivityForResult(intent, AlarmState.CHECK_PASSWORDS);
+                    intent.setFlags(Config.CHECK_PASSWORDS);
+                    startActivityForResult(intent, Config.CHECK_PASSWORDS);
                 }
             }
         });
@@ -341,14 +359,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     return;
                 }
                 Intent intent = new Intent(this, AddAlarmActivity.class);
-                intent.setFlags(AlarmState.AlARMTYPE_ADD);
-                startActivityForResult(intent, AlarmState.AlARMTYPE_ADD);
+                intent.setFlags(Config.AlARMTYPE_ADD);
+                startActivityForResult(intent, Config.AlARMTYPE_ADD);
                 break;
             //头像
             case R.id.main_id_myhead:
                 Intent intent1 = getIntent();
                 intent1.setClass(MainActivity.this, EditHeadActivity.class);
-                startActivityForResult(intent1, AlarmState.ALARMTYPE_SETHEAD);
+                startActivityForResult(intent1, Config.ALARMTYPE_SETHEAD);
                 break;
             //快速闹钟
             case R.id.menus_id_qiuckclock:
@@ -360,8 +378,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             //退出
             case R.id.menus_id_exit:
-                mApp.saveSetting();
-                mApp.saveToFile(getExternalFilesDir(null).getPath(), FileUtil.FLAG_ALARM);
+                FileUtil util = FileUtil.getInstence();
+                util.saveSetting(mApp);
+                util.saveToFile(mApp, getExternalFilesDir(null).getPath(), FileUtil.FLAG_ALARM);
                 this.finish();
                 System.exit(0);
                 break;
@@ -372,26 +391,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
         }
-    }
-
-    private void setQuickAlram(long i) {
-        AlarmBean bean = new AlarmBean(this);
-        bean.setMoreSleepMins(0);
-        bean.setName("快速闹钟");
-        bean.setFlag(AlarmState.QIUCKAlARM);
-        Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(System.currentTimeMillis() + i);
-        int hour = c.get(Calendar.HOUR);
-        int mins = c.get(Calendar.MINUTE);
-        String srt1 = TimeUtil.getInstance().getTimeWithZero(hour, mins);
-        bean.setTimeInMills(c.getTimeInMillis());
-        bean.setTimeStr(srt1);
-        mApp.addAlarmToList(bean);
-        mApp.setAlarmToSystem(this, bean);
-
-        mTimer = new Timer();
-        mTask = new QuickTimeTextTask();
-        mTimer.schedule(mTask, 0, 1000);
     }
 
 
@@ -410,54 +409,67 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         setAllQiuckCheched(false);
+        AlarmUtil util = AlarmUtil.getInstence();
         if (isChecked) {
             if (mTimer != null) {
                 Message message = Message.obtain();
-                message.what = AlarmState.QIUCKAlARM;
+                message.what = Config.QIUCKAlARM;
                 Bundle bundle = new Bundle();
                 bundle.putString("time", "00:00");
                 message.setData(bundle);
                 myHandler.sendMessage(message);
-
-                mTask.cancel();
                 mTimer.cancel();
             }
+
+            long time = 0;
             switch (buttonView.getId()) {
                 case R.id.popup_id_1:
                     mQiuckBtn1.setChecked(true);
-                    setQuickAlram(30 * 1000);
+                    time = 30 * 1000;
                     break;
                 case R.id.popup_id_2:
                     mQiuckBtn2.setChecked(true);
-                    setQuickAlram(60 * 1000);
+                    time = 360 * 1000;
                     break;
                 case R.id.popup_id_3:
                     mQiuckBtn3.setChecked(true);
-                    setQuickAlram(3 * 60 * 1000);
+                    time = 3 * 60 * 1000;
                     break;
                 case R.id.popup_id_4:
                     mQiuckBtn4.setChecked(true);
-                    setQuickAlram(5 * 60 * 1000);
+                    time = 5 * 60 * 1000;
                     break;
                 case R.id.popup_id_5:
                     mQiuckBtn5.setChecked(true);
-                    setQuickAlram(10 * 60 * 1000);
+                    time = 10 * 60 * 1000;
                     break;
                 case R.id.popup_id_6:
                     mQiuckBtn6.setChecked(true);
-                    setQuickAlram(15 * 60 * 1000);
+                    time = 15 * 60 * 1000;
                     break;
                 case R.id.popup_id_7:
                     mQiuckBtn7.setChecked(true);
-                    setQuickAlram(20 * 60 * 1000);
+                    time = 20 * 60 * 1000;
                     break;
                 case R.id.popup_id_8:
                     mQiuckBtn8.setChecked(true);
-                    setQuickAlram(30 * 60 * 1000);
+                    time = 30 * 60 * 1000;
                     break;
             }
+            util.setQuickAlram(MainActivity.this, time, new QuickTimeTextTask.OnTimeFreshListener() {
+                @Override
+                public void onTimeChanged(String timeStr) {
+                    Message message = Message.obtain();
+                    message.what = Config.QIUCKAlARM;
+                    Bundle bundle = new Bundle();
+                    bundle.putString("time", timeStr);
+                    message.setData(bundle);
+                    myHandler.sendMessage(message);
+                }
+            });
+
         } else {
-            mApp.deleteAlarm(MainActivity.this, mApp.getAlarmBean(AlarmState.QIUCKAlARM));
+            util.deleteAlarm(mApp, util.getAlarmByFlag(mApp, Config.QIUCKAlARM));
         }
 
     }
@@ -467,31 +479,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             //从闹钟设置界面返回
-            case AlarmState.AlARMTYPE_EDIT:
+            case Config.AlARMTYPE_EDIT:
                 mAlarmBeanList = mApp.getAlarDates();
-                myHandler.sendEmptyMessage(AlarmState.UPDATE_UI_LISTVIEWBG);
+                myHandler.sendEmptyMessage(Config.UPDATE_UI_LISTVIEWBG);
                 if (mAdapter == null) {
                     initRecyclerView(mAlarmBeanList);
                 }
-                myHandler.sendEmptyMessage(AlarmState.UPDATE_UI_LISTVIEW);
+                myHandler.sendEmptyMessage(Config.UPDATE_UI_LISTVIEW);
                 break;
             //头像设置返回
-            case AlarmState.ALARMTYPE_SETHEAD:
+            case Config.ALARMTYPE_SETHEAD:
                 myUser = mApp.getMyUser();
-                myHeadView.setImageURI(Uri.fromFile(new File(myUser.mHeadPath)));
+                if(myUser.mHeadPath!=null){
+                    myHeadView.setImageURI(Uri.fromFile(new File(myUser.mHeadPath)));
+                }
                 mUserName.setText(myUser.mName);
                 break;
             //从闹铃item返回
-            case AlarmState.AlARMTYPE_ONOFF:
-                myHandler.sendEmptyMessage(AlarmState.UPDATE_UI_LISTVIEW);
+            case Config.AlARMTYPE_ONOFF:
+                myHandler.sendEmptyMessage(Config.UPDATE_UI_LISTVIEW);
                 break;
             //从天气页面返回
-            case AlarmState.WEATHER_FLAG:
+            case Config.WEATHER_FLAG:
                 mWeather = mApp.getWeather();
                 setData2WeatherView();
                 break;
             //从密码界面返回
-            case AlarmState.CHECK_PASSWORDS:
+            case Config.CHECK_PASSWORDS:
 
                 mLockBtn.setChecked(false);
                 myUser.isLock = false;
@@ -505,7 +519,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.handleMessage(msg);
             switch (msg.what) {
                 //有无闹钟时，LisetView的背景显示
-                case AlarmState.UPDATE_UI_LISTVIEWBG:
+                case Config.UPDATE_UI_LISTVIEWBG:
                     if (mAlarmBeanList == null || mAlarmBeanList.size() == 0) {
                         showViewSub();
                     } else {
@@ -514,12 +528,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 //刷新闹钟剩余时间
-                case AlarmState.UPDATE_UI_LISTVIEW:
+                case Config.UPDATE_UI_LISTVIEW:
                     if (mAdapter != null) {
                         mAdapter.notifyDataSetChanged();
                     }
-                    AlarmBean bean = mApp.getRecently();
-                    if (bean == null || bean.getFlag() == AlarmState.QIUCKAlARM) {
+                    AlarmBean bean = AlarmUtil.getInstence().getRecently(mApp);
+                    if (bean == null || bean.getFlag() == Config.QIUCKAlARM) {
                         mRecentlyTimeView.setText("没有闹钟！");
                         mRecenntlyLastView.setText(" ");
                     } else {
@@ -530,7 +544,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
 
                 //快速闹钟那里
-                case AlarmState.QIUCKAlARM:
+                case Config.QIUCKAlARM:
                     if (mAdapter != null) {
                         mAdapter.notifyDataSetChanged();
                     }
@@ -546,31 +560,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        LogUtil.d("save", "在主界面的onPause()方法中保存文件");
-        mApp.saveToFile(getExternalFilesDir(null).getPath(), FileUtil.FLAG_ALARM);
+    protected void onResume() {
+        super.onResume();
+        if (mLastTimer != null) {
+            mDifferTimeTask.setWait(false);
+        }
+        if (mTimer != null) {
+            mTimer.notifyAll();
+
+        }
     }
 
-    class QuickTimeTextTask extends TimerTask {
-        @Override
-        public void run() {
-            AlarmBean bean1 = mApp.getAlarmBean(AlarmState.QIUCKAlARM);
-            if (bean1 != null) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTimeInMillis(bean1.getTimeInMills() - System.currentTimeMillis());
-                String timeStr = TimeUtil.getInstance().getTimeWithZero(calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
-                Message message = Message.obtain();
-                message.what = AlarmState.QIUCKAlARM;
-                Bundle bundle = new Bundle();
-                bundle.putString("time", timeStr);
-                message.setData(bundle);
-                myHandler.sendMessage(message);
-            } else {
-                mTimer.cancel();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            //不在MainActivity的时候就暂停后台进程
+            if (mLastTimer != null) {
+                mDifferTimeTask.setWait(true);
             }
+            if (mTimer != null) {
+                mTimer.wait();
+            }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
     }
 
 
 }
+
+
+
